@@ -70,15 +70,15 @@ document.addEventListener('DOMContentLoaded', function () {
 
   const confirmBtn = document.getElementById('confirm-btn');
   confirmBtn.addEventListener('click', function () {
+    const characterNameInput = document.getElementById('character-name');
+
+    sessionStorage.setItem('characterNameInput', characterNameInput.value);
+
     const selectedCard = document.querySelector('.card.selected');
     if (!selectedCard) {
       alert('Please select a character.');
       return;
     }
-
-    const characterNameInput = document.getElementById('character-name');
-
-    sessionStorage.setItem('characterNameInput', characterNameInput.value);
 
     // Redirect to the next page with character and team data
     window.location.href = `weapon_selection.html`;
