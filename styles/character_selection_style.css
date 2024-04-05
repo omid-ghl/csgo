@@ -1,0 +1,121 @@
+/* Styles for character selection screen */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-color: black; /* Setting black background */
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: fadeIn 1s ease;
+  overflow: hidden; /* Hide overflow content */
+}
+
+.character-selection {
+  text-align: center;
+}
+
+.character-selection h2 {
+  margin-bottom: 20px;
+  color: white; /* Change heading color to white */
+}
+
+#character-name {
+  padding: 10px;
+  font-size: 16px;
+  width: 300px;
+  margin-bottom: 20px;
+}
+
+#character-list {
+  display: flex; /* Set display to flex */
+  flex-wrap: wrap; /* Allow items to wrap to the next line */
+  justify-content: center; /* Center items horizontally */
+  max-height: 80vh; /* Limit max height of the character list */
+  overflow-y: auto; /* Enable vertical scroll if content exceeds max height */
+}
+
+.card {
+  position: relative; /* Make card position relative */
+  width: 200px;
+  height: 200px;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 10px;
+  text-align: center;
+  background-color: #282828; /* Light gray background */
+  transition: background-color 0.3s ease; /* Add transition for background color */
+  overflow: hidden; /* Prevent image overflow */
+}
+
+.card.selected {
+  border-color: #1e88e5; /* Blue border color for selected card */
+  background-color: #65acea; /* Light gray background */
+}
+
+.card.selected:hover {
+  border-color: #1e88e5; /* Blue border color for selected card */
+  background-color: #65acea; /* Light gray background */
+}
+
+.card:hover {
+  background-color: #808080; /* Light gray background on hover */
+}
+
+.card img {
+  max-width: 100%;
+  max-height: 100%; /* Ensure image doesn't exceed card dimensions */
+  border-radius: 5px;
+  margin-bottom: 10px;
+  transition: transform 0.3s ease; /* Add transition for scale effect */
+}
+
+.card:hover img {
+  transform: scale(1.1); /* Scale up image on hover */
+}
+
+.card h3 {
+  margin: 0;
+  color: #333;
+  font-size: 16px;
+  position: absolute; /* Make name position absolute */
+  bottom: 10px; /* Place name at the bottom */
+  left: 0;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent black background */
+  color: white;
+  padding: 5px;
+  box-sizing: border-box;
+  opacity: 0; /* Initially hide name */
+  transition: opacity 0.3s ease; /* Add transition for opacity */
+}
+
+.card:hover h3 {
+  opacity: 1; /* Show name on hover */
+}
+
+#confirm-btn {
+  padding: 10px 20px;
+  font-size: 18px;
+  background-color: #1e88e5; /* Blue color */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 20px;
+}
+
+#confirm-btn:hover {
+  background-color: #1565c0; /* Dark blue color on hover */
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

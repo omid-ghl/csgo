@@ -1,0 +1,141 @@
+/* CSS for agent cards and container */
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  /* align-items: center; */
+  background-color: #222; /* Set dark background color */
+}
+
+.container {
+  max-width: 800px;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: #333; /* Darker background color */
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+h1 {
+  margin-top: 0;
+}
+
+.teammates-container {
+  display: flex;
+  justify-content: space-between; /* Distribute items evenly along the main-axis */
+  margin-top: 20px;
+}
+
+.my-card {
+  margin: 10px;
+  width: calc(30% - 10px); /* Distribute agents in 3 equal parts with margin */
+  border: 4px solid #00409f;
+  border-radius: 8px;
+  padding: 10px;
+  background-color: #373737; /* Dark background color */
+  color: #fff; /* Text color */
+  box-sizing: border-box;
+}
+
+.my-card img:hover {
+  transform: scale(1.05); /* Scale the button when hovering */
+}
+
+.my-card img {
+  width: 100%;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  transition: transform 0.3s ease; /* Adding transition for background color and scaling */
+}
+
+.skin-card img {
+  display: flex;
+  width: 100%;
+  margin-top: 15px;
+}
+
+.my-card img {
+  width: 100%;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+.my-card h3,
+.my-card p {
+  margin: 0;
+}
+
+.my-card p {
+  color: #aaaaaa;
+  margin-top: 5px;
+}
+
+.teammate-card {
+  margin: 10px;
+  width: calc(30% - 10px); /* Distribute agents in 3 equal parts with margin */
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 10px;
+  background-color: #1a1a1a; /* Dark background color */
+  color: #fff; /* Text color */
+  box-sizing: border-box;
+}
+
+.teammate-card img {
+  width: 100%;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  transition: transform 0.3s ease !important; /* Adding transition for background color and scaling */
+}
+
+.teammate-card img:hover {
+  transform: scale(1.05) !important; /* Scale the button when hovering */
+}
+
+.teammate-card h3,
+.teammate-card p {
+  margin: 0;
+}
+
+.teammate-card p {
+  color: #aaaaaa;
+  margin-top: 5px;
+}
+
+.button-container {
+  text-align: center;
+  margin-top: 20px;
+}
+
+button {
+  background-color: royalblue; /* Green button color */
+  color: white;
+  padding: 14px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #003366; /* Darker green color on hover */
+}
+
+button:active {
+  background-color: #001a33; /* Even darker green color on click */
+}
+
+.price {
+  margin-top: 10px !important;
+  padding: 10px 10px;
+  border-radius: 5px;
+  background-color: #00409f;
+}
+
+.charname {
+  margin: 10px 0px !important;
+}

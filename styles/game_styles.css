@@ -1,0 +1,51 @@
+/* Styles for team selection screen */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-color: black; /* Setting black background */
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: fadeIn 1s ease;
+}
+
+.team-selection {
+  text-align: center;
+}
+
+.team-selection h2 {
+  margin-bottom: 20px;
+  color: white; /* Change heading color to white */
+}
+
+.team-btn {
+  display: block;
+  width: 250px;
+  padding: 10px 20px;
+  font-size: 18px;
+  background-color: #1565c0;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin: 10px auto;
+  margin-top: 20px;
+}
+
+.team-btn:hover {
+  background-color: #1565c0;
+  transform: scale(1.1);
+  transition: transform 0.3s ease; /* Add transition for scale effect */
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
