@@ -168,7 +168,6 @@ function toggleSelection(card, price, skin) {
     }
   });
 
-  // Toggle selection of the current card
   if (card.classList.contains('selected')) {
     balance += price;
     card.classList.remove('selected');
