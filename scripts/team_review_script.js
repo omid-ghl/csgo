@@ -3,6 +3,7 @@ let skinData = [];
 
 const team = sessionStorage.getItem('selectedTeam');
 const characterName = sessionStorage.getItem('characterNameInput');
+const teamName = sessionStorage.getItem('teamName');
 
 async function fetchTeammateData() {
   try {
@@ -121,6 +122,8 @@ async function generateRandomTeammateAndItems() {
 }
 
 async function populateRandomTeammatesAndItems() {
+  // Retrieve teamName from sessionStorage
+
   if (team !== 'Counter-Terrorist' && team !== 'Terrorist') {
     console.error('Invalid team selection');
     return;
@@ -159,6 +162,10 @@ async function populateRandomTeammatesAndItems() {
   document
     .querySelector('.teammates-container')
     .appendChild(pickedAgentInfoDiv);
+
+  // Display teamName in the header div
+  const headerDiv = document.querySelector('.title');
+  headerDiv.textContent = `💪   ${teamName}`;
 
   // Generate and display random agent cards
   for (let i = 0; i < 3; i++) {
@@ -201,7 +208,23 @@ async function populateRandomTeammatesAndItems() {
   }
 }
 
-// Call populateRandomTeammatesAndItems when the DOM content is loaded
 document.addEventListener('DOMContentLoaded', function () {
   populateRandomTeammatesAndItems();
+
+  // Add event listeners for the buttons
+  const backButton = document.getElementById('backButton');
+  backButton.addEventListener('click', function () {
+    window.history.back();
+  });
+
+  const regenerateButton = document.getElementById('regenerateButton');
+  regenerateButton.addEventListener('click', function () {
+    location.reload();
+  });
+
+  const restartButton = document.getElementById('restartButton');
+
+  restartButton.addEventListener('click', function () {
+    window.location.href = 'index.html';
+  });
 });

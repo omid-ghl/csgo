@@ -39,8 +39,22 @@ body {
   background-color: rgb(47, 55, 70);
 }
 
+#team-name-input {
+  order: 2;
+  background-color: rgb(47, 55, 70);
+  width: 20vw;
+  padding: 15px;
+  border-radius: 10px;
+  color: cornsilk;
+}
+
 #next-btn {
-  order: 2; /* Move the next button to the left */
+  order: 3;
+}
+
+#next-btn .disabled {
+  opacity: 0.5;
+  pointer-events: none;
 }
 
 .agent-card {

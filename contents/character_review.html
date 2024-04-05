@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>character review Screen</title>
+    <title>Character Review Screen</title>
     <link rel="stylesheet" href="../styles/character_review_style.css" />
   </head>
   <body>
@@ -17,8 +17,11 @@
       <div id="weapons-list" class="weapons-list"></div>
 
       <div class="button-container">
+        <!-- Input field for team name -->
         <button id="back-btn">Back</button>
-        <button id="next-btn">Next</button>
+        <input type="text" id="team-name-input" placeholder="Enter Team Name" />
+        <button id="next-btn" disabled>Next</button>
+        <!-- Disable the Next button by default -->
       </div>
     </div>
 

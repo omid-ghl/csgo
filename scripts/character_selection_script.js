@@ -58,10 +58,6 @@ function selectCharacter(selectedAgent) {
 
   // Save selected character's data and input data in session storage
   sessionStorage.setItem('selectedCharacter', JSON.stringify(selectedAgent));
-
-  console.log('selectedAgent', selectedAgent);
-  const characterNameInput = document.getElementById('character-name');
-  sessionStorage.setItem('characterNameInput', characterNameInput.value);
 }
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -79,6 +75,10 @@ document.addEventListener('DOMContentLoaded', function () {
       alert('Please select a character.');
       return;
     }
+
+    const characterNameInput = document.getElementById('character-name');
+
+    sessionStorage.setItem('characterNameInput', characterNameInput.value);
 
     // Redirect to the next page with character and team data
     window.location.href = `weapon_selection.html`;

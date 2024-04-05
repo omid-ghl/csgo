@@ -179,8 +179,8 @@ function toggleSelection(card, price, skin) {
       pickedWeaponsList.splice(index, 1);
     }
   } else {
-    if (balance - price < 0) {
-      return; // Prevent selecting if insufficient balance
+    if (balance - price < 0 || pickedWeaponsList.length >= 6) {
+      return; // Prevent selecting if insufficient balance or already selected six items
     }
     balance -= price;
     card.classList.add('selected');
@@ -202,6 +202,15 @@ function toggleSelection(card, price, skin) {
       card.classList.remove('disabled-card');
     }
   });
+
+  // Check if six items are picked, if so, enable the confirm button
+  const confirmButton = document.getElementById('confirm-btn');
+
+  if (pickedWeaponsList.length < 6) {
+    confirmButton.disabled = true;
+  } else {
+    confirmButton.disabled = false;
+  }
 }
 
 function selectWeapons() {
@@ -245,6 +254,11 @@ async function populatePurchasedWeaponsList() {
       const index = pickedWeaponsList.indexOf(weapon);
       if (index !== -1) {
         pickedWeaponsList.splice(index, 1);
+      }
+      // Disable confirm button if less than six items are picked
+      const confirmButton = document.getElementById('confirm-btn');
+      if (pickedWeaponsList.length < 6) {
+        confirmButton.disabled = true;
       }
     });
     purchasedWeaponsList.appendChild(listItem);

@@ -189,3 +189,9 @@ body {
 .row-card.selected .picked-badge {
   display: block;
 }
+
+#confirm-btn:disabled {
+  background-color: #cccccc; /* Change to the desired color when button is disabled */
+  color: #666666; /* Change to the desired text color when button is disabled */
+  cursor: not-allowed; /* Change cursor to not-allowed when button is disabled */
+}
