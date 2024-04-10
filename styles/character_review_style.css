@@ -41,7 +41,7 @@ body {
 
 #team-name-input {
   order: 2;
-  background-color: rgb(47, 55, 70);
+  background-color: #333;
   width: 20vw;
   padding: 15px;
   border-radius: 10px;

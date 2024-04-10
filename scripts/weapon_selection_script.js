@@ -283,6 +283,7 @@ function createSkinCard(skin, price) {
   const skinDiv = document.createElement("div");
   skinDiv.classList.add("row-card");
 
+  console.log(skin);
   skinDiv.innerHTML = `
     <div class="card" style="position: relative;">
       <img src="${skin.image}" alt="${skin.name}">
@@ -291,6 +292,7 @@ function createSkinCard(skin, price) {
     <div class="card-content">
       <h3>${skin.name}</h3>
       <p>${skin.category.name} - ${skin.rarity.name} - ${skin.pattern.name}</p>
+      <h4>${skin.description.substring(0, 60)} ... </h4>
     </div>
     <div class="weapon-price">
       <h2>${price} $</h2>

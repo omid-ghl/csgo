@@ -131,6 +131,13 @@ body {
   font-size: 16px;
 }
 
+.card-content h4 {
+  margin: 0;
+  color: #9eb8e4;
+  font-size: 12px;
+  text-align: center;
+}
+
 .card-content p {
   margin: 5px 0;
   color: #a4a4a4;
