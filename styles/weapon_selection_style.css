@@ -3,8 +3,8 @@ body {
   margin: 0;
   padding: 0;
   font-family: Arial, sans-serif;
-  background-color: black; /* Setting black background */
-  color: white; /* Setting text color to white */
+  background-color: black;
+  color: white;
   justify-content: center;
   align-items: center;
   display: flex;
@@ -19,44 +19,46 @@ body {
 
 .tabs-container {
   display: flex;
-  height: 90vh; /* Set maximum height for tabs list */
-  overflow-y: auto; /* Enable vertical scrolling for tabs */
+  height: 90vh;
+  overflow-y: auto;
 }
 
 .tabcontent-container {
   width: 100%;
-  height: 90vh; /* Set maximum height for tabs list */
-  overflow-y: auto; /* Enable vertical scrolling for weapon collection content */
+  height: 90vh;
+  overflow-y: auto;
 }
 
-.content {
-  align-items: center;
+.balance-content {
+  color: white;
+  display: flex;
+  margin: 20px 0;
+}
+
+.sub-tab {
+  display: flex;
+  padding: 10px;
   flex-direction: column;
-}
-
-.content h2 {
-  display: flex;
-  justify-content: center;
-}
-
-.balance {
-  display: flex;
-  justify-content: center;
+  margin: 10px;
+  margin-right: 140px;
+  background-color: #071725;
+  padding: 0px 40px;
+  border-radius: 20px;
 }
 
 .tab {
   width: max-content;
-  margin-top: 20px;
-  margin-bottom: 20px;
+  margin: 20px;
   flex-direction: column;
   display: flex;
   padding-right: 20px;
 }
 
-.tablinks {
+.tablinks,
+.sub-tablinks {
   padding: 10px 40px;
   font-size: 16px;
-  background-color: #1e88e5; /* Blue color */
+  background-color: #135b99;
   border: none;
   cursor: pointer;
   transition: background-color 0.3s ease;
@@ -65,12 +67,9 @@ body {
   margin-top: 20px;
 }
 
-.tablinks:hover {
-  background-color: #1565c0; /* Dark blue color on hover */
-}
-
-.tablinks.active {
-  background-color: #ff5722; /* Change to your desired color */
+.tablinks:hover,
+.sub-tablinks:hover {
+  background-color: #135b99;
 }
 
 .tabcontent {
@@ -78,16 +77,12 @@ body {
   width: 70%;
   align-items: center;
   justify-content: center;
-  background-color: #081e31 !important;
+  background-color: #081e31;
   border-radius: 15px;
   margin-left: 30px;
   padding: 10px;
 }
 
-.footer {
-  display: flex;
-  justify-content: center;
-}
 #confirm-btn {
   padding: 10px 20px;
   font-size: 18px;
@@ -97,7 +92,8 @@ body {
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s ease;
-  margin-top: 20px;
+  position: absolute;
+  bottom: 5px;
 }
 
 #confirm-btn:hover {
@@ -126,7 +122,7 @@ body {
   max-width: 100%;
   max-height: 100%;
   border-radius: 5px;
-  transition: transform 0.3s ease; /* Add transition for scale effect */
+  transition: transform 0.3s ease;
 }
 
 .card-content h3 {
@@ -167,7 +163,7 @@ body {
 }
 
 .card:hover img {
-  transform: scale(1.1); /* Scale up image on hover */
+  transform: scale(1.1);
 }
 
 .card.disabled {
@@ -177,7 +173,7 @@ body {
 
 .picked-badge {
   position: absolute;
-  bottom: 10px; /* Adjust top position as needed */
+  bottom: 10px;
   left: 10px;
   background-color: rgb(69, 54, 230);
   color: white;
@@ -191,7 +187,27 @@ body {
 }
 
 #confirm-btn:disabled {
-  background-color: #cccccc; /* Change to the desired color when button is disabled */
-  color: #666666; /* Change to the desired text color when button is disabled */
-  cursor: not-allowed; /* Change cursor to not-allowed when button is disabled */
+  background-color: #cccccc;
+  color: #666666;
+  cursor: not-allowed;
+}
+
+.balance-content {
+  color: white;
+  display: flex;
+  margin: 20px 0;
+}
+
+/* Add this CSS to change the color of active tab and sub-tab */
+.tablinks.active,
+.sub-tablinks.active {
+  transition: transform 0.3s ease; /* Add transition for scale effect */
+  background-color: #1e88e5;
+  color: white;
+  transform: scale(1.1); /* Scale up image on hover */
+}
+
+.tablinks:focus,
+.sub-tablinks:focus {
+  outline: none; /* Remove default focus outline */
 }
