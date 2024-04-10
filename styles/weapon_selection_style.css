@@ -218,3 +218,7 @@ body {
 .sub-tablinks:focus {
   outline: none; /* Remove default focus outline */
 }
+
+.empty-message {
+  text-align: center;
+}

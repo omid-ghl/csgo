@@ -259,9 +259,11 @@ async function openSubTab(categoryName, weaponName, selectedTeam) {
   const skins = categorySkinsMap[categoryName] || [];
 
   const matchingSkins = skins.filter((skin) => {
+    console.log("injo", skin.team.id.toLowerCase(), selectedTeam.toLowerCase());
+
     return (
       skin.weapon.name.toLowerCase() === weaponName.toLowerCase() &&
-      (skin.team.id.toLowerCase() === selectedTeam.toLowerCase() ||
+      (skin.team.id.toLowerCase() === selectedTeam.toLowerCase() + "s" ||
         skin.team.id === "both")
     );
   });
@@ -285,7 +287,8 @@ async function openSubTab(categoryName, weaponName, selectedTeam) {
   } else {
     // Display a placeholder message when no matching skins are found
     const placeholder = document.createElement("p");
-    placeholder.textContent = "No skins available for this selection.";
+    placeholder.textContent =
+      "No skins available for your team on this tab please change your team to can see or choose these items";
     placeholder.classList.add("empty-message");
     tabContentDiv.appendChild(placeholder);
   }
