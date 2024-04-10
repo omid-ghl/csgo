@@ -208,44 +208,49 @@ async function openTab(categoryName, selectedTeam) {
 
   const skins = categorySkinsMap[categoryName] || [];
 
-  const rarityMap = {}; // Map to store skins by rarity
+  const weaponMap = {}; // Map to store skins by rarity
 
   // Organize skins by rarity
   skins.forEach((skin) => {
-    const rarityName = skin.rarity.name;
-    if (!rarityMap[rarityName]) {
-      rarityMap[rarityName] = [];
+    const weaponName = skin.weapon.name;
+    if (!weaponMap[weaponName]) {
+      weaponMap[weaponName] = [];
     }
-    rarityMap[rarityName].push(skin);
+    weaponMap[weaponName].push(skin);
   });
 
   const subTabContainer = document.getElementById("sub-tabs");
   subTabContainer.innerHTML = ""; // Clear existing sub-tabs
 
-  // Create sub-tabs for each rarity
-  Object.keys(rarityMap).forEach((rarityName) => {
+  // Filter out empty sub-categories (rarity tabs)
+  const nonEmptyWeaponNames = Object.keys(weaponMap).filter(
+    (weaponName) => weaponMap[weaponName].length > 0
+  );
+
+  // Create sub-tabs only for non-empty rarity categories
+  nonEmptyWeaponNames.forEach((weaponName) => {
     const subTabButton = document.createElement("button");
-    subTabButton.textContent = rarityName;
+    subTabButton.textContent = weaponName;
     subTabButton.classList.add("sub-tablinks");
     subTabButton.addEventListener("click", function () {
-      openSubTab(categoryName, rarityName, selectedTeam);
+      openSubTab(categoryName, weaponName, selectedTeam);
     });
     subTabContainer.appendChild(subTabButton);
   });
 
-  // Automatically click the first sub-tab to populate weapons
+  // Automatically click the first non-empty sub-tab to populate weapons
   const subTabLinks = document.querySelectorAll(".sub-tablinks");
   if (subTabLinks.length > 0) {
     subTabLinks[0].click();
   }
 }
 
-async function openSubTab(categoryName, rarityName, selectedTeam) {
+async function openSubTab(categoryName, weaponName, selectedTeam) {
   console.log(
     "Opening sub-tab for category:",
     categoryName,
     "with rarity:",
-    rarityName
+    weaponName
   );
 
   const tabContentDiv = document.getElementById("weapon-collection-content");
@@ -253,29 +258,36 @@ async function openSubTab(categoryName, rarityName, selectedTeam) {
 
   const skins = categorySkinsMap[categoryName] || [];
 
-  if (skins.length > 0) {
-    skins.forEach((skin) => {
-      if (
-        skin.rarity.name === rarityName &&
-        (skin.team.id === selectedTeam.toLowerCase() || skin.team.id === "both")
-      ) {
-        const price = getRandomPrice(categoryName);
-        const skinDiv = createSkinCard(skin, price);
+  const matchingSkins = skins.filter((skin) => {
+    return (
+      skin.weapon.name.toLowerCase() === weaponName.toLowerCase() &&
+      (skin.team.id.toLowerCase() === selectedTeam.toLowerCase() ||
+        skin.team.id === "both")
+    );
+  });
 
-        // Check if the price exceeds the balance
-        if (price > balance) {
-          skinDiv.classList.add("disabled-card");
-        } else {
-          skinDiv.addEventListener("click", function () {
-            toggleSelection(skinDiv, price, skin);
-          });
-        }
+  if (matchingSkins.length > 0) {
+    matchingSkins.forEach((skin) => {
+      const price = getRandomPrice(categoryName);
+      const skinDiv = createSkinCard(skin, price);
 
-        tabContentDiv.appendChild(skinDiv);
+      // Check if the price exceeds the balance
+      if (price > balance) {
+        skinDiv.classList.add("disabled-card");
+      } else {
+        skinDiv.addEventListener("click", function () {
+          toggleSelection(skinDiv, price, skin);
+        });
       }
+
+      tabContentDiv.appendChild(skinDiv);
     });
   } else {
-    console.log("No skins found for category:", categoryName);
+    // Display a placeholder message when no matching skins are found
+    const placeholder = document.createElement("p");
+    placeholder.textContent = "No skins available for this selection.";
+    placeholder.classList.add("empty-message");
+    tabContentDiv.appendChild(placeholder);
   }
 }
 
@@ -283,7 +295,6 @@ function createSkinCard(skin, price) {
   const skinDiv = document.createElement("div");
   skinDiv.classList.add("row-card");
 
-  console.log(skin);
   skinDiv.innerHTML = `
     <div class="card" style="position: relative;">
       <img src="${skin.image}" alt="${skin.name}">
@@ -291,7 +302,7 @@ function createSkinCard(skin, price) {
     </div>
     <div class="card-content">
       <h3>${skin.name}</h3>
-      <p>${skin.category.name} - ${skin.rarity.name} - ${skin.pattern.name}</p>
+      <p>${skin.category.name} - ${skin.weapon.name} - ${skin.pattern.name}</p>
       <h4>${skin.description.substring(0, 60)} ... </h4>
     </div>
     <div class="weapon-price">
